@@ -31,33 +31,35 @@
 
 
 
-            NotificationManager manager = new NotificationManager(emailService);
+            NotificationManager manager = new NotificationManager();
 
             manager.Send(
                 "student@school.nl",
-                "Je nieuwe rooster staat klaar."
+                "Je nieuwe rooster staat klaar.",
+                emailService
+
             );
 
-            manager.SetNotificationService(smsService);
             manager.Send(
                 "0612345678",
-                "Je les begint over 15 minuten."
+                "Je les begint over 15 minuten.",
+                smsService
             );
 
-            manager.SetNotificationService(pushService);
             manager.Send(
                 "student123",
-                "Er staat nieuwe feedback voor je klaar."
+                "Er staat nieuwe feedback voor je klaar.",
+                pushService
             );
 
 
             INotificationService whatsAppService =
                 new WhatsAppNotificationAdapter(new ExternalWhatsAppLibrary.WhatsAppClient());
 
-            manager.SetNotificationService(whatsAppService);
             manager.Send(
                 "0612345678",
-                "Je huiswerk is beoordeeld."
+                "Je huiswerk is beoordeeld.",
+                whatsAppService
             );
 
 

@@ -6,18 +6,9 @@ namespace NotificationApp
     {
         private INotificationService _notificationService;
 
-        public NotificationManager(INotificationService notificationService)
+        public void Send(string recipient, string message, INotificationService notificationService)
         {
             _notificationService = notificationService;
-        }
-
-        public void SetNotificationService(INotificationService notificationService)
-        {
-            _notificationService = notificationService;
-        }
-
-        public void Send(string recipient, string message)
-        {
             _notificationService.Send(recipient, message);
         }
     }
